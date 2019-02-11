@@ -2,6 +2,7 @@ package edu.cableado;
 
 import edu.utilitario.Cargador;
 import inv.logica.*;
+import vista.VistaPrincipal;
 public class Restaurante {
 
 	public static void main(String[] args) {
@@ -10,6 +11,11 @@ public class Restaurante {
 		Cargador cf = new Cargador("front",ClassLoader.getSystemClassLoader());
 		Cargador cb = new Cargador("back",ClassLoader.getSystemClassLoader());
         Class clsf,clsb;
+        
+        
+		VistaPrincipal vp = new VistaPrincipal();
+		vp.mostrarVentana();
+		//vp.cambios();
 		
         try {
 		
@@ -26,7 +32,9 @@ public class Restaurante {
 			clsb = cb.cargarUnaClaseDesdeSuDirectorio(IGestionAlimentos.class.getName());
 			if (clsb != null) {
 				IGestionAlimentos ig =(IGestionAlimentos)clsb.getConstructor().newInstance();
+
 				ig.actualizarAlimentos();
+				ig.mostrarPedidosPrioritarios();
 			}
 		}catch (Exception e) {e.printStackTrace();}
         
@@ -36,6 +44,7 @@ public class Restaurante {
 			if (clsf != null) {
 				IPedidos ir = (IPedidos)clsf.getConstructor().newInstance();
 				ir.hacerPedido();
+				
 				
 			}
 		} catch (Exception e) {e.printStackTrace();}
