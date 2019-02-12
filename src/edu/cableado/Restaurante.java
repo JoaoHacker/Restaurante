@@ -15,7 +15,6 @@ public class Restaurante {
         
 		VistaPrincipal vp = new VistaPrincipal();
 		vp.mostrarVentana();
-		//vp.cambios();
 		
         try {
 		
@@ -40,27 +39,27 @@ public class Restaurante {
         
         try {
 			
+   			clsf = cf.cargarUnaClaseDesdeSuDirectorio(IPagos.class.getName());
+   			if (clsf != null) {
+   				vp.eliminarVentana();
+   				IPagos ip = (IPagos)clsf.getConstructor().newInstance();
+   				ip.capturarPago();
+   				ip.guardarPago();
+   				
+   			}
+   		} catch (Exception e) {e.printStackTrace();} 
+        
+        try {
 			clsf = cf.cargarUnaClaseDesdeSuDirectorio(IPedidos.class.getName());
 			if (clsf != null) {
 				IPedidos ir = (IPedidos)clsf.getConstructor().newInstance();
 				ir.hacerPedido();
-				
+				ir.mostrarProductos();
 				
 			}
 		} catch (Exception e) {e.printStackTrace();}
         
-try {
-			
-			clsf = cf.cargarUnaClaseDesdeSuDirectorio(IPagos.class.getName());
-			if (clsf != null) {
-				IPagos ip = (IPagos)clsf.getConstructor().newInstance();
-				ip.capturarPago();
-				ip.guardarPago();
-				
-			}
-		} catch (Exception e) {e.printStackTrace();}
-      
+   
 	}
-
 	}
 

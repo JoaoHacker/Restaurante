@@ -14,7 +14,7 @@ public class VistaPrincipal {
 
 	private JFrame frmSoftwareRestaurante;
 	private JPanel panel;
-
+	private VistaPrincipal window;
 	/**
 	 * Launch the application.
 	 */
@@ -24,6 +24,7 @@ public class VistaPrincipal {
 				try {
 					VistaPrincipal window = new VistaPrincipal();
 					window.frmSoftwareRestaurante.setVisible(true);
+					setWindow(window);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -38,6 +39,35 @@ public class VistaPrincipal {
 	public VistaPrincipal() {
 		initialize();
 		
+	}
+	public void eliminarVentana() {
+
+		getWindow().frmSoftwareRestaurante.hide();
+
+	}
+
+	public JFrame getFrmSoftwareRestaurante() {
+		return frmSoftwareRestaurante;
+	}
+
+	public void setFrmSoftwareRestaurante(JFrame frmSoftwareRestaurante) {
+		this.frmSoftwareRestaurante = frmSoftwareRestaurante;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
+
+	public VistaPrincipal getWindow() {
+		return window;
+	}
+
+	public void setWindow(VistaPrincipal window) {
+		this.window = window;
 	}
 
 	/**
